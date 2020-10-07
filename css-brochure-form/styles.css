@@ -1,0 +1,52 @@
+* {
+  font-family: 'Brandon Grotesque', sans-serif;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: orangered;
+  font-size: 1.25rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.field {
+  font-family: "Brandon Grotesque", sans-serif;
+  text-transform: none;
+  height: 40px;
+  width: 500px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding-left: 10px;
+}
+
+label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+select {
+  background-color: whitesmoke;
+}
+
+.submit-cont {
+  text-align: right;
+}
+
+.submit {
+  background-color: orangered;
+  color: white;
+  text-transform: uppercase;
+  height: 36px;
+  width: 100px;
+  border-radius: 18px;
+  border: none;
+}
