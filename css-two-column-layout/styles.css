@@ -74,3 +74,9 @@ button {
   width: 12rem;
   height: 2.5rem;
 }
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(184, 78, 8);
+  color: white;
+}
