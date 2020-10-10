@@ -5,6 +5,7 @@
 body {
   font-family: Avenir, Arial, sans-serif;
   font-size: 1.1rem;
+  color: dimgray;
 }
 
 header {
@@ -40,8 +41,17 @@ p {
   line-height: 2rem;
 }
 
+q {
+  font-family: "Tiempos Headline", 'Times New Roman', serif;
+  font-style: italic;
+}
+
 header a {
   color: darkgray;
+}
+
+.font-blue {
+  color: rgb(10, 66, 101);
 }
 
 .flex {
@@ -54,6 +64,14 @@ header a {
 
 .justify-flex-end {
   justify-content: flex-end;
+}
+
+.margin-left {
+  margin-left: 5rem;
+}
+
+.margin-right {
+  margin-right: 5rem;
 }
 
 .row {
@@ -86,8 +104,7 @@ header a {
   margin-bottom: 1rem;
 }
 
-.hero {
-  background-image: url(images/hero.jpg);
+.hero-img {
   background-size: cover;
   position: relative;
   display: flex;
@@ -96,6 +113,14 @@ header a {
   height: 650px;
   margin: 4rem 0;
   color: white;
+}
+
+.index-hero {
+  background-image: url(images/hero.jpg);
+}
+
+.product-hero {
+  background-image: url(images/product/product-header.jpg);
 }
 
 .overlay {
@@ -134,11 +159,12 @@ header a {
   border-radius: 0.25rem;
 }
 
-.locations {
+.gray-section {
   background-color: rgb(245, 245, 245);
-  border-bottom: 1px solid lightgray;
-  color: dimgray;
-  padding: 3rem 0 5rem 0;
+}
+
+.section-padding {
+  padding: 5rem 0;
 }
 
 .locations-header {
@@ -154,9 +180,17 @@ header a {
   margin: 2rem 0;
 }
 
+.product-a {
+  color: rgb(10, 66, 101);
+  margin-bottom: 1.5rem;
+}
+
+.learn-more {
+  border-top: 1px solid lightgray;
+}
+
 .learn-text {
-  color: dimgray;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .footer1 {
@@ -180,10 +214,6 @@ header a {
 .footer1 a {
   font-size: 1.4rem;
   margin-top: 2rem;
-}
-
-.pad {
-  padding: 6rem 0;
 }
 
 .footer2 {
