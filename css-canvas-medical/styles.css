@@ -30,7 +30,7 @@ h3 {
 
 h1 {
   font-family: "Tiempos Headline", 'Times New Roman', serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 h3 {
@@ -123,6 +123,10 @@ header a {
   background-image: url(images/product/product-header.jpg);
 }
 
+.implementation-hero {
+  background-image: url(images/implementation/implementation-header.jpg);
+}
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.25);
   position: absolute;
@@ -185,8 +189,33 @@ header a {
   margin-bottom: 1.5rem;
 }
 
+.imp-content {
+  text-align: center;
+  padding: 3rem 0 10rem 0;
+}
+
+.imp-item {
+  width: 45%;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.imp-item h1 {
+  padding-right: 0.75rem;
+}
+
+.imp-item h1,
+.imp-item h3 {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
 .learn-more {
   border-top: 1px solid lightgray;
+}
+
+.learn-more h1 {
+  margin-bottom: 0;
 }
 
 .learn-text {
@@ -216,13 +245,9 @@ header a {
   margin-top: 2rem;
 }
 
-.footer2 {
-  color: dimgray;
-}
-
 .footer2 a {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   margin-right: 3rem;
   color: dimgray;
 }
