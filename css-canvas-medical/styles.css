@@ -20,7 +20,6 @@ nav {
 
 a {
   text-decoration: none;
-  color: white;
 }
 
 h1,
@@ -275,6 +274,39 @@ header a {
   margin-bottom: 0;
 }
 
+.subscribe {
+  text-align: center;
+}
+
+.subscribe h1 {
+  margin-bottom: 0;
+}
+
+.email-input {
+  border-bottom: 2px solid lightgray;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  width: 40%;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+}
+
+.email-input::placeholder {
+  color: darkgray;
+}
+
+.subscribe-button {
+  background-color: rgb(10, 66, 101);
+  color: white;
+  font-size: 1.5rem;
+  padding: 1.25rem 3rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+
 .footer1 {
   background-color: dimgray;
   color: white;
@@ -296,6 +328,7 @@ header a {
 .footer1 a {
   font-size: 1.4rem;
   margin-top: 2rem;
+  color: white;
 }
 
 .footer2 a {
@@ -310,7 +343,8 @@ header a:hover {
 }
 
 .contact-button:hover,
-.get-started-button:hover {
+.get-started-button:hover,
+.subscribe-button:hover {
   cursor: pointer;
   color: rgb(10, 66, 101);
   background-color: darkgray;
