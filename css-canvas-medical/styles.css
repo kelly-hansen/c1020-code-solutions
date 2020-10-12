@@ -268,14 +268,11 @@ header a {
 
 .learn-more {
   border-top: 1px solid lightgray;
+  padding: 1rem 0;
 }
 
 .learn-more h1 {
   margin-bottom: 0;
-}
-
-.learn-text {
-  padding: 1.5rem 0;
 }
 
 .footer1 {
