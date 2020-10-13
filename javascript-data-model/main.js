@@ -8,6 +8,7 @@ var orderHistory = [
     productList: [
       {
         productName: 'Javascript for impatient programmers',
+        productImg: 'https://images-na.ssl-images-amazon.com/images/I/41jk+Ueey9L._SY344_BO1,204,203,200_.jpg',
         productPrice: 31.55
       }
     ],
@@ -21,6 +22,7 @@ var orderHistory = [
     productList: [
       {
         productName: 'The Timeless Way of Building',
+        productImg: 'https://images-na.ssl-images-amazon.com/images/I/41CJ2M0--6L._SX325_BO1,204,203,200_.jpg',
         productPrice: 41.33
       }
     ],
@@ -34,6 +36,7 @@ var orderHistory = [
     productList: [
       {
         productName: 'Gamecube Controller Adapter. Super Smash Bros Switch Gamecube Adapter for WII U, PC. Support Turbo and Vibration Features. No Driver and No Lag-Gamecube Adapter',
+        productImg: 'https://images-na.ssl-images-amazon.com/images/I/61jLJ-RXf6L._AC_SL1200_.jpg',
         productPrice: 15.98
       }
     ],
@@ -47,10 +50,12 @@ var orderHistory = [
     productList: [
       {
         productName: 'GameCube Controller - Super Smash Brose. Edition (Nintendo Switch)',
+        productImg: 'https://images-na.ssl-images-amazon.com/images/I/71A1D-Y-rHL._SL1500_.jpg',
         productPrice: 94.95
       },
       {
         productName: 'The Art of Sql',
+        productImg: 'https://images-na.ssl-images-amazon.com/images/I/51D3mzc3a0L._SX379_BO1,204,203,200_.jpg',
         productPrice: 33.99
       }
     ],
