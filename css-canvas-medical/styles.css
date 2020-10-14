@@ -319,6 +319,36 @@ header a {
   margin: 0;
 }
 
+.phone {
+  color: rgb(10, 66, 101);
+  font-size: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid lightgray;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  font-size: 1.5rem;
+  color: darkgray;
+  font-family: Avenir, Arial, sans-serif;
+}
+
+.submit-button {
+  background-color: rgb(10, 66, 101);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+
 .learn-more {
   border-top: 1px solid lightgray;
   padding: 1rem 0;
@@ -365,7 +395,8 @@ header a:hover {
 
 .contact-button:hover,
 .get-started-button:hover,
-.subscribe-button:hover {
+.subscribe-button:hover,
+.submit-button:hover {
   cursor: pointer;
   color: rgb(10, 66, 101);
   background-color: darkgray;
