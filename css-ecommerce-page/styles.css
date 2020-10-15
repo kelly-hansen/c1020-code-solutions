@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.82rem;
+  margin: 0.82rem 0 0 0;
+}
+
+.row {
+  display: flex;
+  max-width: 75%;
+  margin: 0 auto;
+  align-items: flex-end;
+}
+
+.col-fifth {
+  width: 20%;
+  margin: 0 0.5rem;
+}
+
+.col-fifth img {
+  height: 318px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.item-size {
+  color: #d4d4d4;
+  border-left: 1px solid #d4d4d4;
+  padding-left: 0.25rem;
+}
+
+.disc-price {
+  background-color: #fff2e7;
+  padding: 0.1rem;
+  border-radius: 0.25rem;
+}
+
+.orig-price {
+  color: #d4d4d4;
+  text-decoration: line-through;
+  padding-left: 0.2rem;
+}
