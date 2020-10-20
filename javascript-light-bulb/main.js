@@ -1,11 +1,13 @@
 var $cont = document.querySelector('#cont');
+var bulbOn = false;
 
 function onOff(event) {
-  var contClass = $cont.className;
-  if (contClass === 'off') {
+  if (bulbOn === false) {
     $cont.className = 'on';
+    bulbOn = true;
   } else {
     $cont.className = 'off';
+    bulbOn = false;
   }
 }
 
