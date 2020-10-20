@@ -2,7 +2,8 @@ var $cont = document.querySelector('#cont');
 var $bulb = document.querySelector('#bulb');
 
 function onOff(event) {
-  if ($bulb.className === 'bulb-off') {
+  var bulbClass = $bulb.className;
+  if (bulbClass === 'bulb-off') {
     $bulb.className = 'bulb-on';
     $cont.className = 'cont-on';
   } else {
