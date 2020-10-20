@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.cont-off {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+}
+
+.cont-on {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fef9f1;
+}
+
+.bulb-off {
+  background-color: #252525;
+  border-radius: 50%;
+  padding: 8rem;
+  box-shadow: 0 -1rem 0.2rem 0.5rem #0c0c0c;
+}
+
+.bulb-on {
+  background-color: rgb(250, 234, 132);
+  border-radius: 50%;
+  padding: 8rem;
+  box-shadow: 0 0 2rem 0 rgb(250, 234, 132);
+}
