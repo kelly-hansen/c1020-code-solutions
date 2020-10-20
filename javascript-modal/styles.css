@@ -1,0 +1,52 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+button {
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 2rem;
+  box-shadow: 0 0.15rem 0.25rem 0 gray;
+  cursor: pointer;
+}
+
+.open {
+  background-color: #4a4ae9;
+  margin: 0.5rem;
+}
+
+.no {
+  display: inline-block;
+  background-color: #d64d4d;
+}
+
+.modal-cont {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.flex {
+  display: flex;
+}
+
+.modal {
+  height: 15rem;
+  width: 28rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+}
