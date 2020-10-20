@@ -319,9 +319,25 @@ header a {
   margin: 0;
 }
 
-.phone {
+.get-in-touch {
+  padding-right: 11rem;
+}
+
+.get-in-touch h1 {
+  margin-top: 0;
+}
+
+.get-in-touch p {
+  font-size: 1.6rem;
+}
+
+.get-in-touch .phone {
   color: rgb(10, 66, 101);
   font-size: 2rem;
+}
+
+.contact-section {
+  padding: 10rem 0;
 }
 
 .contact-form input,
@@ -337,7 +353,6 @@ header a {
   font-size: 1.5rem;
   padding: 1rem 0;
   margin-bottom: 1rem;
-  margin-left: 3rem;
 }
 
 .contact-form input::placeholder,
@@ -353,13 +368,21 @@ header a {
   font-size: 1.5rem;
 }
 
-.submit-button {
+.submit-button-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form .submit-button {
   background-color: rgb(10, 66, 101);
   color: white;
   border: none;
   border-radius: 0.25rem;
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
+  display: inline-block;
+  width: auto;
+  margin-top: 3rem;
 }
 
 .learn-more {
