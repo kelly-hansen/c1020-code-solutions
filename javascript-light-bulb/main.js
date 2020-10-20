@@ -1,15 +1,12 @@
 var $cont = document.querySelector('#cont');
-var $bulb = document.querySelector('#bulb');
 
 function onOff(event) {
-  var bulbClass = $bulb.className;
-  if (bulbClass === 'bulb-off') {
-    $bulb.className = 'bulb-on';
-    $cont.className = 'cont-on';
+  var contClass = $cont.className;
+  if (contClass === 'off') {
+    $cont.className = 'on';
   } else {
-    $bulb.className = 'bulb-off';
-    $cont.className = 'cont-off';
+    $cont.className = 'off';
   }
 }
 
-$bulb.addEventListener('click', onOff);
+$cont.addEventListener('click', onOff);
