@@ -244,13 +244,14 @@ function dealCards(players, number, shuffledDeck) {
 
 function scoreHand(playerObj) {
   var handArr = playerObj.hand;
-  var cardValue;
   var score = 0;
-  var isFaceCard = false;
   for (var x = 0; x < handArr.length; x++) {
+    var cardValue;
+    var isFaceCard = false;
     for (var y = 0; y < faceCards.length; y++) {
       if (handArr[x].rank === faceCards[y]) {
         isFaceCard = true;
+        break;
       }
     }
     if (isFaceCard) {
@@ -326,4 +327,4 @@ function playGame(players, number) {
   logResults(number);
 }
 
-playGame(pokerStarz, 5);
+playGame(pokerStarz, 3);
