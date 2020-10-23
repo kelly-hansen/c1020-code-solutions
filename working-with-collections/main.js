@@ -269,12 +269,13 @@ function scoreHand(playerObj) {
 var winner;
 var highScore;
 
-function handleTie(players, number) {
+function resetHands(players) {
   for (var k = 0; k < players.length; k++) {
     players[k].hand = [];
   }
-  var shuffledDeck = _.shuffle(deck);
-  dealCards(players, number, shuffledDeck);
+}
+
+function determineWinner(players, number) {
   highScore = 0;
   var tiedPlayers = [];
   for (var z = 0; z < players.length; z++) {
@@ -292,6 +293,13 @@ function handleTie(players, number) {
     tiedPlayers = _.uniq(tiedPlayers);
     handleTie(tiedPlayers, number);
   }
+}
+
+function handleTie(players, number) {
+  resetHands(players);
+  var shuffledDeck = _.shuffle(deck);
+  dealCards(players, number, shuffledDeck);
+  determineWinner(players, number);
 }
 
 function logResults(number) {
@@ -307,23 +315,7 @@ function logResults(number) {
 function playGame(players, number) {
   var shuffledDeck = _.shuffle(deck);
   dealCards(players, number, shuffledDeck);
-  highScore = 0;
-  var tiedPlayers = [];
-  for (var z = 0; z < players.length; z++) {
-    var playerScore = scoreHand(players[z]);
-    if (playerScore > highScore) {
-      highScore = playerScore;
-      winner = players[z];
-    } else if (playerScore === highScore) {
-      winner = 'tie';
-      tiedPlayers.push(players[z]);
-    }
-  }
-  if (winner === 'tie') {
-    console.log('TIE BREAKER');
-    tiedPlayers = _.uniq(tiedPlayers);
-    handleTie(tiedPlayers, number);
-  }
+  determineWinner(players, number);
   logResults(number);
 }
 
@@ -332,26 +324,24 @@ function updateDOM() {
   var $score = document.querySelector('h2 span');
   $winner.textContent = winner.name;
   $score.textContent = highScore;
-
   var $cards = document.querySelectorAll('.card');
   for (var v = 0; v < winner.hand.length; v++) {
-    if (winner.hand[v].suit === 'Hearts' || winner.hand[v].suit === 'Diamonds') {
-      $cards[v].className = 'card red';
-    } else {
-      $cards[v].className = 'card black';
-    }
     var $p = $cards[v].querySelectorAll('p');
     $p[0].textContent = winner.hand[v].rank;
     $p[2].textContent = winner.hand[v].rank;
     var cardSuit = winner.hand[v].suit;
     if (cardSuit === 'Hearts') {
       $p[1].innerHTML = '&heartsuit;';
+      $cards[v].className = 'card red';
     } else if (cardSuit === 'Diamonds') {
       $p[1].innerHTML = '&diamondsuit;';
+      $cards[v].className = 'card red';
     } else if (cardSuit === 'Spades') {
       $p[1].innerHTML = '&spadesuit;';
-    } else {
+      $cards[v].className = 'card black';
+    } else if (cardSuit === 'Clubs') {
       $p[1].innerHTML = '&clubsuit;';
+      $cards[v].className = 'card black';
     }
   }
 }
@@ -359,9 +349,7 @@ function updateDOM() {
 var $button = document.querySelector('button');
 
 $button.addEventListener('click', function (event) {
-  for (var u = 0; u < pokerStarz.length; u++) {
-    pokerStarz[u].hand = [];
-  }
+  resetHands(pokerStarz);
   playGame(pokerStarz, 5);
   updateDOM();
 });
