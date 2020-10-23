@@ -237,7 +237,8 @@ var faceCards = ['K', 'Q', 'J'];
 function dealCards(players, number, shuffledDeck) {
   for (var q = 0; q < number; q++) {
     for (var i = 0; i < players.length; i++) {
-      players[i].hand.push(shuffledDeck[(i + 1) * (q + 1)]);
+      var cardIndex = q * players.length + i;
+      players[i].hand.push(shuffledDeck[cardIndex]);
     }
   }
 }
@@ -327,4 +328,4 @@ function playGame(players, number) {
   logResults(number);
 }
 
-playGame(pokerStarz, 3);
+playGame(pokerStarz, 5);
