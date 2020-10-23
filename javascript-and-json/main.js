@@ -15,8 +15,8 @@ var booksArr = [
     author: 'Stephen King'
   }
 ];
-
 console.log('booksArr:', booksArr);
+console.log('typeof booksArr:', typeof booksArr);
 
 var booksStr = JSON.stringify(booksArr);
 console.log('booksStr:', booksStr);
