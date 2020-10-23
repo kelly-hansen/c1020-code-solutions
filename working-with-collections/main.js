@@ -232,8 +232,6 @@ var deck = [
   }
 ];
 
-var faceCards = ['K', 'Q', 'J'];
-
 function dealCards(players, number, shuffledDeck) {
   for (var q = 0; q < number; q++) {
     for (var i = 0; i < players.length; i++) {
@@ -245,6 +243,7 @@ function dealCards(players, number, shuffledDeck) {
 
 function scoreHand(playerObj) {
   var handArr = playerObj.hand;
+  var faceCards = ['K', 'Q', 'J'];
   var score = 0;
   for (var x = 0; x < handArr.length; x++) {
     var cardValue;
@@ -328,4 +327,44 @@ function playGame(players, number) {
   logResults(number);
 }
 
+function updateDOM() {
+  var $winner = document.querySelector('h1 span');
+  var $score = document.querySelector('h2 span');
+  $winner.textContent = winner.name;
+  $score.textContent = highScore;
+
+  var $cards = document.querySelectorAll('.card');
+  for (var v = 0; v < winner.hand.length; v++) {
+    if (winner.hand[v].suit === 'Hearts' || winner.hand[v].suit === 'Diamonds') {
+      $cards[v].className = 'card red';
+    } else {
+      $cards[v].className = 'card black';
+    }
+    var $p = $cards[v].querySelectorAll('p');
+    $p[0].textContent = winner.hand[v].rank;
+    $p[2].textContent = winner.hand[v].rank;
+    var cardSuit = winner.hand[v].suit;
+    if (cardSuit === 'Hearts') {
+      $p[1].innerHTML = '&heartsuit;';
+    } else if (cardSuit === 'Diamonds') {
+      $p[1].innerHTML = '&diamondsuit;';
+    } else if (cardSuit === 'Spades') {
+      $p[1].innerHTML = '&spadesuit;';
+    } else {
+      $p[1].innerHTML = '&clubsuit;';
+    }
+  }
+}
+
+var $button = document.querySelector('button');
+
+$button.addEventListener('click', function (event) {
+  for (var u = 0; u < pokerStarz.length; u++) {
+    pokerStarz[u].hand = [];
+  }
+  playGame(pokerStarz, 5);
+  updateDOM();
+});
+
 playGame(pokerStarz, 5);
+updateDOM();
