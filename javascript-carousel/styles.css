@@ -56,7 +56,7 @@ i:hover {
 .indicator-div div {
   border: 0.2rem solid black;
   padding: 0.5rem;
-  margin: 0.75rem 0.4rem 0rem 0.4rem;
+  margin: 0.75rem 0.4rem 0 0.4rem;
   border-radius: 50%;
 }
 
@@ -64,6 +64,6 @@ i:hover {
   cursor: pointer;
 }
 
-.selected {
+#selected {
   background-color: black;
 }
