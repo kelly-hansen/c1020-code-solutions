@@ -1,6 +1,8 @@
 var $displayedImg = document.querySelector('img');
 var $carousel = document.querySelector('.carousel-cont');
 var $indicatorsCont = document.querySelector('.indicators-cont');
+var $addImageForm = document.querySelector('form');
+var $addImageURLInput = document.querySelector('#imageURL');
 
 // images array must have at least one item to render carousel properly
 var images = ['images/001.png', 'images/004.png', 'images/007.png', 'images/025.png', 'images/039.png'];
@@ -52,6 +54,14 @@ function renderCarousel() {
     $indicatorsCont.appendChild($indicatorDiv);
   }
 }
+
+$addImageForm.addEventListener('submit', function () {
+  images.push($addImageURLInput.value);
+  var $indicatorDiv = document.createElement('div');
+  $indicatorDiv.className = 'indicator';
+  $indicatorDiv.setAttribute('data-index', images.length - 1);
+  $indicatorsCont.appendChild($indicatorDiv);
+});
 
 window.addEventListener('DOMContentLoaded', function () {
   var localStorageImages = JSON.parse(localStorage.getItem('images'));
