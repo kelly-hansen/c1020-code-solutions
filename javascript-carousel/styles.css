@@ -8,6 +8,7 @@ body {
 
 section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -15,6 +16,10 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+form {
+  margin-bottom: 1rem;
 }
 
 i {
