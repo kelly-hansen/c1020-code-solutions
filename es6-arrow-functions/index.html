@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tell Flash A Joke</title>
+  <style>
+  body {
+    background-color: lightsteelblue;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .image-container > img {
+    max-width: 60%;
+    max-height: 80%;
+  }
+
+  #joke-container > *,
+  form {
+    text-align: center;
+  }
+
+  .slide-in {
+    animation: slide 0.5s;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+  </style>
+</head>
+<body>
+  <div id="joke-container"></div>
+  <div class="image-container">
+    <img id="flash-image" src="images/flash-neutral.jpg" alt="Zootopia Flash">
+  </div>
+  <form id="joke-form">
+    <input required name="setup" placeholder="What's the setup?" size="60">
+    <input required name="punchline" placeholder="What's the punchline?" size="30">
+    <button type="submit">Tell Flash a joke!</button>
+  </form>
+
+  <script>
+    const jokester = {
+      riff: function (setup, punchline) {
+        this.say('Hey Flash...');
+        setTimeout(() => {
+          this.say(setup);
+          setTimeout(() => {
+            this.say(punchline);
+            flash.respond();
+          }, 2000);
+        }, 2000);
+      },
+      say: function (phrase) {
+        const $phrase = document.createElement('p');
+        $phrase.textContent = phrase;
+        $phrase.className = 'slide-in';
+        const $jokeContainer = document.getElementById('joke-container');
+        $jokeContainer.append($phrase);
+      }
+    };
+
+    const flash = {
+      laughingUrl: 'images/flash-laugh.gif',
+      respond: function () {
+        setTimeout(() => {
+          const $image = document.getElementById('flash-image');
+          $image.setAttribute('src', this.laughingUrl);
+        }, 3000);
+      }
+    };
+
+    const $jokeForm = document.getElementById('joke-form');
+    $jokeForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const { setup, punchline } = event.target.elements;
+      jokester.riff(setup.value, punchline.value);
+    });
+  </script>
+</body>
+</html>
