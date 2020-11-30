@@ -7,15 +7,10 @@ if (process.argv[2] === 'read') {
     console.log(`${key}: ${data.notes[key]}`);
   }
 } else if (process.argv[2] === 'create') {
-  let last = 0;
-  for (const key in data.notes) {
-    if (parseInt(key) > last) {
-      last = parseInt(key);
-    }
-  }
-  data.notes[last + 1] = process.argv[3];
+  data.notes[data.nextId] = process.argv[3];
+  data.nextId++;
 } else if (process.argv[2] === 'delete') {
-  delete data.notes[process.argv[3].toString()];
+  delete data.notes[process.argv[3]];
 } else if (process.argv[2] === 'update') {
   data.notes[process.argv[3]] = process.argv[4];
 }
