@@ -3,6 +3,8 @@ const data = require('./data.json');
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/api/notes', (req, res) => {
   const notes = [];
   for (let i = 1; i < data.nextId; i++) {
@@ -19,6 +21,21 @@ app.get('/api/notes/:id', (req, res) => {
     res.status(200).json(data.notes[id]);
   } else if (!data.notes[id]) {
     res.status(404).json({ error: `cannot find note with id ${id}` });
+  }
+});
+
+app.post('/api/notes', (req, res) => {
+  const newNote = req.body.content;
+  if (!newNote) {
+    res.status(400).json({ error: 'content is a required field' });
+  } else if (newNote) {
+    data.notes[data.nextId] = {};
+    data.notes[data.nextId].content = newNote;
+    data.notes[data.nextId].id = data.nextId;
+    res.status(201).json(data.notes[data.nextId]);
+    data.nextId++;
+  } else {
+    res.status(500).json({ error: 'An unexpected error occurred.' });
   }
 });
 
