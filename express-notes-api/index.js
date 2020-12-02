@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const data = require('./data.json');
 
 const app = express();
@@ -29,15 +30,19 @@ app.post('/api/notes', (req, res) => {
   if (!newNote) {
     res.status(400).json({ error: 'content is a required field' });
   } else {
-    data.notes[data.nextId] = {};
-    data.notes[data.nextId].content = newNote;
-    data.notes[data.nextId].id = data.nextId;
-    if (data.notes[data.nextId]) {
-      res.status(201).json(data.notes[data.nextId]);
-      data.nextId++;
-    } else {
-      res.status(500).json({ error: 'An unexpected error occurred.' });
-    }
+    const noteId = data.nextId;
+    data.notes[noteId] = {};
+    data.notes[noteId].content = newNote;
+    data.notes[noteId].id = data.nextId;
+    data.nextId++;
+    const newData = JSON.stringify(data, null, 2);
+    fs.writeFile('./data.json', newData, 'utf8', err => {
+      if (err) {
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(201).json(data.notes[noteId]);
+      }
+    });
   }
 });
 
@@ -49,11 +54,14 @@ app.delete('/api/notes/:id', (req, res) => {
     res.status(404).json({ error: `cannot find note with id ${id}` });
   } else {
     delete data.notes[id];
-    if (!data.notes[id]) {
-      res.sendStatus(204);
-    } else {
-      res.status(500).json({ error: 'An unexpected error occurred.' });
-    }
+    const newData = JSON.stringify(data, null, 2);
+    fs.writeFile('./data.json', newData, 'utf8', err => {
+      if (err) {
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.sendStatus(204);
+      }
+    });
   }
 });
 
@@ -68,11 +76,14 @@ app.put('/api/notes/:id', (req, res) => {
     res.status(404).json({ error: `cannot find note with id ${id}` });
   } else {
     data.notes[id].content = newNote;
-    if (data.notes[id].content === newNote) {
-      res.status(200).json(data.notes[id]);
-    } else {
-      res.status(500).json({ error: 'An unexpected error occurred.' });
-    }
+    const newData = JSON.stringify(data, null, 2);
+    fs.writeFile('./data.json', newData, 'utf8', err => {
+      if (err) {
+        res.status(500).json({ error: 'An unexpected error occurred.' });
+      } else {
+        res.status(200).json(data.notes[id]);
+      }
+    });
   }
 });
 
