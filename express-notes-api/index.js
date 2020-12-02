@@ -28,14 +28,32 @@ app.post('/api/notes', (req, res) => {
   const newNote = req.body.content;
   if (!newNote) {
     res.status(400).json({ error: 'content is a required field' });
-  } else if (newNote) {
+  } else {
     data.notes[data.nextId] = {};
     data.notes[data.nextId].content = newNote;
     data.notes[data.nextId].id = data.nextId;
-    res.status(201).json(data.notes[data.nextId]);
-    data.nextId++;
+    if (data.notes[data.nextId]) {
+      res.status(201).json(data.notes[data.nextId]);
+      data.nextId++;
+    } else {
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    }
+  }
+});
+
+app.delete('/api/notes/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (!Number.isInteger(id) || id <= 0) {
+    res.status(400).json({ error: 'id must be a positive integer' });
+  } else if (!data.notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}` });
   } else {
-    res.status(500).json({ error: 'An unexpected error occurred.' });
+    delete data.notes[id];
+    if (!data.notes[id]) {
+      res.sendStatus(204);
+    } else {
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    }
   }
 });
 
