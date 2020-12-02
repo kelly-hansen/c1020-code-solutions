@@ -7,11 +7,11 @@ const app = express();
 app.use(express.json());
 
 app.get('/api/notes', (req, res) => {
-  const notes = [];
-  for (let i = 1; i < data.nextId; i++) {
-    notes.push(data.notes[i]);
+  const notesArr = [];
+  for (const note in data.notes) {
+    notesArr.push(data.notes[note]);
   }
-  res.status(200).json(notes);
+  res.status(200).json(notesArr);
 });
 
 app.get('/api/notes/:id', (req, res) => {
