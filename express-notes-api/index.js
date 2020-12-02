@@ -57,6 +57,25 @@ app.delete('/api/notes/:id', (req, res) => {
   }
 });
 
+app.put('/api/notes/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const newNote = req.body.content;
+  if (!Number.isInteger(id) || id <= 0) {
+    res.status(400).json({ error: 'id must be a positive integer' });
+  } else if (!newNote) {
+    res.status(400).json({ error: 'content is a required field' });
+  } else if (!data.notes[id]) {
+    res.status(404).json({ error: `cannot find note with id ${id}` });
+  } else {
+    data.notes[id].content = newNote;
+    if (data.notes[id].content === newNote) {
+      res.status(200).json(data.notes[id]);
+    } else {
+      res.status(500).json({ error: 'An unexpected error occurred.' });
+    }
+  }
+});
+
 app.listen(3000, () => {
   process.stdout.write('Express server listening on port 3000\n');
 });
