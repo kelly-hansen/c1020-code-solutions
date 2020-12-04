@@ -28,8 +28,16 @@ app.get('/api/grades', (req, res) => {
 app.post('/api/grades', (req, res) => {
   const newName = req.body.name;
   const newCourse = req.body.course;
-  const newScore = req.body.score;
-  console.log(newName, newCourse, newScore);
+  const newScore = parseInt(req.body.score, 10);
+  if (newName === undefined || newCourse === undefined || isNaN(newScore)) {
+    res.status(400).json({ error: 'name, course, and score are required fields' });
+    return;
+  }
+  if (!Number.isInteger(newScore) || newScore < 1 || newScore > 100) {
+    res.status(400).json({ error: 'score must be an integer 1-100' });
+
+  }
+
 });
 
 app.listen(3000, () => {
