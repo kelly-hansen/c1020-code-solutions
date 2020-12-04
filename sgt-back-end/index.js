@@ -56,6 +56,11 @@ app.post('/api/grades', (req, res) => {
     });
 });
 
+app.put('/api/grades/:gradeId', (req, res) => {
+  const id = req.params.gradeId;
+
+});
+
 app.listen(3000, () => {
   process.stdout.write('Express server listening on port 3000\n');
 });
