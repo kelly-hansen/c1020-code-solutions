@@ -8,6 +8,8 @@ const db = new pg.Pool({
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/api/grades', (req, res) => {
   const sql = `
     select *
@@ -21,6 +23,13 @@ app.get('/api/grades', (req, res) => {
       console.error(err);
       res.status(500).json({ error: 'An unexpected error has occurred' });
     });
+});
+
+app.post('/api/grades', (req, res) => {
+  const newName = req.body.name;
+  const newCourse = req.body.course;
+  const newScore = req.body.score;
+  console.log(newName, newCourse, newScore);
 });
 
 app.listen(3000, () => {
