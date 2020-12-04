@@ -28,8 +28,11 @@ app.get('/api/grades', (req, res) => {
 app.post('/api/grades', (req, res) => {
   const newName = req.body.name;
   const newCourse = req.body.course;
-  const newScore = parseInt(req.body.score, 10);
-  if (newName === undefined || newCourse === undefined || isNaN(newScore)) {
+  let newScore;
+  if (req.body.score) {
+    newScore = parseInt(req.body.score, 10);
+  }
+  if (newName === undefined || newCourse === undefined || newScore === undefined) {
     res.status(400).json({ error: 'name, course, and score are required fields' });
     return;
   }
