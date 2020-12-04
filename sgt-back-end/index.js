@@ -15,12 +15,11 @@ app.get('/api/grades', (req, res) => {
   `;
   db.query(sql)
     .then(result => {
-      const grades = result.rows;
-      if (!grades) {
-        res.status(500).json({ error: 'An unexpected error has occurred' });
-      } else {
-        res.status(200).json(grades);
-      }
+      res.status(200).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An unexpected error has occurred' });
     });
 });
 
