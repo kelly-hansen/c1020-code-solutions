@@ -102,6 +102,17 @@ app.put('/api/grades/:gradeId', (req, res) => {
     });
 });
 
+app.delete('/api/grades/:gradeId', (req, res) => {
+  const id = parseInt(req.params.gradeId);
+  const newName = req.body.name;
+  const newCourse = req.body.course;
+  let newScore;
+  if (req.body.score) {
+    newScore = parseInt(req.body.score);
+  }
+
+});
+
 app.listen(3000, () => {
   process.stdout.write('Express server listening on port 3000\n');
 });
