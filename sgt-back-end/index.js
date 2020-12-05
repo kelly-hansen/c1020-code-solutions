@@ -107,8 +107,9 @@ app.put('/api/grades/:gradeId', (req, res) => {
         res.status(404).json({
           error: `Cannot find grade with gradeId: ${id}`
         });
+      } else {
+        res.status(201).json(returnedRow);
       }
-      res.status(201).json(returnedRow);
     })
     .catch(err => {
       console.error(err);
@@ -126,7 +127,29 @@ app.delete('/api/grades/:gradeId', (req, res) => {
     });
     return;
   }
-  if () {}
+  const sql = `
+    delete from "grades"
+          where "gradeId" = $1
+      returning *;
+  `;
+  const values = [id];
+  db.query(sql, values)
+    .then(result => {
+      const returnedRow = result.rows[0];
+      if (!returnedRow) {
+        res.status(404).json({
+          error: `Cannot find grade with gradeId: ${id}`
+        });
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error has occurred'
+      });
+    });
 });
 
 app.listen(3000, () => {
