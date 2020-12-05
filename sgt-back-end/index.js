@@ -57,8 +57,33 @@ app.post('/api/grades', (req, res) => {
 });
 
 app.put('/api/grades/:gradeId', (req, res) => {
-  const id = req.params.gradeId;
-
+  const id = parseInt(req.params.gradeId, 10);
+  const newName = req.body.name;
+  const newCourse = req.body.course;
+  let newScore;
+  if (req.body.score) {
+    newScore = parseInt(req.body.score, 10);
+  }
+  if (!Number.isInteger(id) || id < 1) {
+    res.status(400).json({ error: 'gradeId must be a positive integer' });
+    return;
+  }
+  if (newName === undefined || newCourse === undefined || newScore === undefined) {
+    res.status(400).json({ error: 'name, course, and score are required fields' });
+    return;
+  }
+  if (!Number.isInteger(newScore) || newScore < 1 || newScore > 100) {
+    res.status(400).json({ error: 'score must be an integer 1-100' });
+    return;
+  }
+  const sql = `
+    update "grades"
+       set "name"   = $2
+           "course" = $3
+           "score"  = $4
+     where "gradeId" = $1
+  `;
+  const values = [id, newName, newCourse, newScore];
 });
 
 app.listen(3000, () => {
