@@ -22,7 +22,9 @@ app.get('/api/grades', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'An unexpected error has occurred' });
+      res.status(500).json({
+        error: 'An unexpected error has occurred'
+      });
     });
 });
 
@@ -34,11 +36,15 @@ app.post('/api/grades', (req, res) => {
     newScore = parseInt(req.body.score, 10);
   }
   if (newName === undefined || newCourse === undefined || newScore === undefined) {
-    res.status(400).json({ error: 'name, course, and score are required fields' });
+    res.status(400).json({
+      error: 'name, course, and score are required fields'
+    });
     return;
   }
   if (!Number.isInteger(newScore) || newScore < 1 || newScore > 100) {
-    res.status(400).json({ error: 'score must be an integer 1-100' });
+    res.status(400).json({
+      error: 'score must be an integer 1-100'
+    });
     return;
   }
   const sql = `
@@ -53,7 +59,9 @@ app.post('/api/grades', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'An unexpected error has occurred' });
+      res.status(500).json({
+        error: 'An unexpected error has occurred'
+      });
     });
 });
 
@@ -66,15 +74,21 @@ app.put('/api/grades/:gradeId', (req, res) => {
     newScore = parseInt(req.body.score, 10);
   }
   if (!Number.isInteger(id) || id < 1) {
-    res.status(400).json({ error: 'gradeId must be a positive integer' });
+    res.status(400).json({
+      error: 'gradeId must be a positive integer'
+    });
     return;
   }
   if (newName === undefined || newCourse === undefined || newScore === undefined) {
-    res.status(400).json({ error: 'name, course, and score are required fields' });
+    res.status(400).json({
+      error: 'name, course, and score are required fields'
+    });
     return;
   }
   if (!Number.isInteger(newScore) || newScore < 1 || newScore > 100) {
-    res.status(400).json({ error: 'score must be an integer 1-100' });
+    res.status(400).json({
+      error: 'score must be an integer 1-100'
+    });
     return;
   }
   const sql = `
@@ -98,13 +112,21 @@ app.put('/api/grades/:gradeId', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'An unexpected error has occurred' });
+      res.status(500).json({
+        error: 'An unexpected error has occurred'
+      });
     });
 });
 
 app.delete('/api/grades/:gradeId', (req, res) => {
   const id = parseInt(req.params.gradeId);
-
+  if (!Number.isInteger(id) || id < 1) {
+    res.status(400).json({
+      error: 'gradeId must be a positive integer'
+    });
+    return;
+  }
+  if () {}
 });
 
 app.listen(3000, () => {
