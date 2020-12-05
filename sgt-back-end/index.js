@@ -12,8 +12,9 @@ app.use(express.json());
 
 app.get('/api/grades', (req, res) => {
   const sql = `
-    select *
-      from "grades";
+      select *
+        from "grades"
+    order by "gradeId";
   `;
   db.query(sql)
     .then(result => {
