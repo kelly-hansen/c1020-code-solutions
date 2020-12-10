@@ -7,7 +7,14 @@ class Stopwatch extends React.Component {
   }
 
   render() {
-    const newStopwatch = <div>Hello</div>;
+    const newStopwatch = (
+      <div className="cont">
+        <div className="watch">
+          <p>0</p>
+        </div>
+        <div className="play-pause"><i className="fas fa-play"></i></div>
+      </div>
+    );
 
     return newStopwatch;
   }
