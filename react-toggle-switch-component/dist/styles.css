@@ -3,28 +3,39 @@
 }
 
 .cont {
+  position: relative;
   display: flex;
-  border: 0.25rem solid black;
-  height: 3.5rem;
+}
+
+.back {
+  border: 4px solid black;
+  height: 3rem;
   width: 6rem;
   border-radius: 3rem;
 }
 
 .on {
   justify-content: flex-end;
-  background-color: green;
 }
 
 .off {
   justify-content: flex-start;
+}
+
+.on .back {
+  background-color: green;
+}
+
+.off .back {
   background-color: lightgray;
 }
 
 .switch {
+  position: absolute;
   width: 3rem;
-  height: 100%;
+  height: 3rem;
   background-color: white;
-  border: 0.25rem solid black;
+  border: 4px solid black;
   border-radius: 3rem;
 }
 

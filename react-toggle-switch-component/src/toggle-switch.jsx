@@ -22,6 +22,7 @@ export default class ToggleSwitch extends React.Component {
 
     return (
       <div className={contClass} onClick={this.handleClick}>
+        <div className="back"></div>
         <div className="switch"></div>
       </div>
     );
