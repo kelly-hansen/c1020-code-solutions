@@ -17,20 +17,26 @@ export default class HotButton extends React.Component {
 
   render() {
     let button;
-    if (this.state.clickCount < 3) {
-      button = <button className="gray" onClick={this.handleClick}>Hot Button</button>;
-    } else if (this.state.clickCount < 6) {
-      button = <button className="purple" onClick={this.handleClick}>Hot Button</button>;
-    } else if (this.state.clickCount < 9) {
-      button = <button className="lightpurple" onClick={this.handleClick}>Hot Button</button>;
-    } else if (this.state.clickCount < 12) {
-      button = <button className="red" onClick={this.handleClick}>Hot Button</button>;
-    } else if (this.state.clickCount < 15) {
-      button = <button className="orange" onClick={this.handleClick}>Hot Button</button>;
-    } else if (this.state.clickCount < 18) {
-      button = <button className="yellow" onClick={this.handleClick}>Hot Button</button>;
+    let buttonClass;
+    if (this.state.clickCount < 18) {
+      if (this.state.clickCount < 3) {
+        buttonClass = 'gray';
+      } else if (this.state.clickCount < 6) {
+        buttonClass = 'purple';
+      } else if (this.state.clickCount < 9) {
+        buttonClass = 'lightpurple';
+      } else if (this.state.clickCount < 12) {
+        buttonClass = 'red';
+      } else if (this.state.clickCount < 15) {
+        buttonClass = 'orange';
+      } else if (this.state.clickCount < 18) {
+        buttonClass = 'yellow';
+
+      }
+      button = <button className={buttonClass} onClick={this.handleClick}>Hot Button</button>;
     } else {
-      button = <button className="white">Hot Button</button>;
+      buttonClass = 'white';
+      button = <button className={buttonClass}>Hot Button</button>;
     }
     return (
       button
