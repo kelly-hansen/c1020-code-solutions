@@ -2,9 +2,22 @@
   box-sizing: border-box;
 }
 
+p {
+  width: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .cont {
+  display: flex;
+  align-items: center;
+}
+
+.switch-cont {
   position: relative;
   display: flex;
+  margin-right: 1rem;
 }
 
 .back {

@@ -14,16 +14,22 @@ export default class ToggleSwitch extends React.Component {
 
   render() {
     let contClass;
+    let labelText;
     if (this.state.on) {
-      contClass = 'cont on';
+      contClass = 'switch-cont on';
+      labelText = 'ON';
     } else {
-      contClass = 'cont off';
+      contClass = 'switch-cont off';
+      labelText = 'OFF';
     }
 
     return (
-      <div className={contClass} onClick={this.handleClick}>
-        <div className="back"></div>
-        <div className="switch"></div>
+      <div className="cont">
+        <div className={contClass} onClick={this.handleClick}>
+          <div className="back"></div>
+          <div className="switch"></div>
+        </div>
+        <p>{labelText}</p>
       </div>
     );
   }
