@@ -15,7 +15,7 @@ export default class HotButton extends React.Component {
 
   handleClick() {
     clickCount++;
-    if (clickCount === 3 && currentButtonColorIndex < buttonColors.length - 1) {
+    if (clickCount === 3) {
       clickCount = 0;
       currentButtonColorIndex++;
       this.setState({
@@ -25,8 +25,14 @@ export default class HotButton extends React.Component {
   }
 
   render() {
+    let button;
+    if (buttonColors[currentButtonColorIndex] === 'white') {
+      button = <button className={this.state.class}>Hot Button</button>;
+    } else {
+      button = <button className={this.state.class} onClick={this.handleClick}>Hot Button</button>;
+    }
     return (
-      <button className={this.state.class} onClick={this.handleClick}>Hot Button</button>
+      button
     );
   }
 }
