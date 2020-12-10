@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.cont {
+  display: flex;
+  border: 0.25rem solid black;
+  height: 3.5rem;
+  width: 6rem;
+  border-radius: 3rem;
+}
+
+.on {
+  justify-content: flex-end;
+  background-color: green;
+}
+
+.off {
+  justify-content: flex-start;
+  background-color: lightgray;
+}
+
+.switch {
+  width: 3rem;
+  height: 100%;
+  background-color: white;
+  border: 0.25rem solid black;
+  border-radius: 3rem;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
