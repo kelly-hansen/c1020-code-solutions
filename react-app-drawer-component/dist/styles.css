@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.menu-cont {
+  height: 100%;
+  width: 25%;
+}
+
+.dark-bg {
+  height: 100%;
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
