@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+p {
+  width: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+}
+
+.switch-cont {
+  position: relative;
+  display: flex;
+  margin-right: 1rem;
+}
+
+.back {
+  border: 4px solid black;
+  height: 3rem;
+  width: 6rem;
+  border-radius: 3rem;
+}
+
+.on {
+  justify-content: flex-end;
+}
+
+.off {
+  justify-content: flex-start;
+}
+
+.on .back {
+  background-color: green;
+}
+
+.off .back {
+  background-color: lightgray;
+}
+
+.switch {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 3rem;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
