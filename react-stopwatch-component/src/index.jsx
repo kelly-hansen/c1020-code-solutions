@@ -14,7 +14,7 @@ class Stopwatch extends React.Component {
   }
 
   playPause() {
-    const stateCopy = this.state;
+    const stateCopy = Object.assign({}, this.state);
     if (this.state.running) {
       stateCopy.running = false;
       clearInterval(stateCopy.timerID);
@@ -30,7 +30,7 @@ class Stopwatch extends React.Component {
   }
 
   reset() {
-    const stateCopy = this.state;
+    const stateCopy = Object.assign({}, this.state);
     stateCopy.time = 0;
     this.setState(stateCopy);
   }
