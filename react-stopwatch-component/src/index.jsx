@@ -37,20 +37,16 @@ class Stopwatch extends React.Component {
 
   render() {
     let playPauseIcon;
-    if (!this.state.running) {
-      playPauseIcon = 'fas fa-play';
-    } else {
-      playPauseIcon = 'fas fa-pause';
-    }
-
     let watchFace;
     if (this.state.running === false) {
+      playPauseIcon = 'fas fa-play';
       watchFace = (
         <div className="watch" onClick={this.reset}>
           <p>{this.state.time}</p>
         </div>
       );
     } else {
+      playPauseIcon = 'fas fa-pause';
       watchFace = (
         <div className="watch">
           <p>{this.state.time}</p>
