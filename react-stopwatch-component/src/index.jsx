@@ -29,7 +29,11 @@ class Stopwatch extends React.Component {
     }
   }
 
-  reset() {}
+  reset() {
+    const stateCopy = this.state;
+    stateCopy.time = 0;
+    this.setState(stateCopy);
+  }
 
   render() {
     let playPauseIcon;
@@ -38,11 +42,25 @@ class Stopwatch extends React.Component {
     } else {
       playPauseIcon = 'fas fa-pause';
     }
-    const newStopwatch = (
-      <div className="cont">
+
+    let watchFace;
+    if (this.state.running === false) {
+      watchFace = (
+        <div className="watch" onClick={this.reset}>
+          <p>{this.state.time}</p>
+        </div>
+      );
+    } else {
+      watchFace = (
         <div className="watch">
           <p>{this.state.time}</p>
         </div>
+      );
+    }
+
+    const newStopwatch = (
+      <div className="cont">
+        {watchFace}
         <div className="play-pause" onClick={this.playPause}>
           <i className={playPauseIcon}></i>
         </div>
