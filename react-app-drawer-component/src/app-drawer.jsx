@@ -13,9 +13,15 @@ class AppDrawer extends React.Component {
     if (this.state.isOpen === false) {
       drawer = <i className="fas fa-bars"></i>;
     } else {
+      const menuItems = this.props.menuItems.map(item => {
+        return <p key={item.id}>{item.name}</p>;
+      });
       drawer = (
         <div className="modal">
-          <div className="menu-cont"></div>
+          <div className="menu">
+            <h2>Menu</h2>
+            {menuItems}
+          </div>
           <div className="dark-bg"></div>
         </div>
       );

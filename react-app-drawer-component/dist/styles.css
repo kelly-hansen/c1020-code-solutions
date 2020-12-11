@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .modal {
   display: flex;
   position: fixed;
@@ -11,9 +15,14 @@
   right: 0;
 }
 
-.menu-cont {
+.menu {
   height: 100%;
   width: 25%;
+  padding: 2.5rem;
+}
+
+.menu p:hover {
+  cursor: pointer;
 }
 
 .dark-bg {
