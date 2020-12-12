@@ -19,11 +19,16 @@ class Accordion extends React.Component {
     this.state = {
       selected: null
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+
   }
 
   render() {
     const list = this.props.items.map(item => {
-      return <AccordionItem selectedId={this.state.selected} itemObj={item} key={item.id} />;
+      return <AccordionItem onClick={this.handleClick} selectedId={this.state.selected} itemObj={item} key={item.id} />;
     });
 
     return <div>{list}</div>;
