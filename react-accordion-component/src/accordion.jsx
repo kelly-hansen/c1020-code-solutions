@@ -5,7 +5,7 @@ class AccordionItem extends React.Component {
     return (
       <div>
         <div className="title">Working</div>
-        {this.props.showDetails && <div className="details"></div>}
+        {this.props.selected && <div className="details">Details</div>}
       </div>
     );
   }
@@ -24,7 +24,7 @@ class Accordion extends React.Component {
     if (this.state.selected === null) {
       list = (
         <div>
-          <AccordionItem />
+          <AccordionItem selected="true" />
           <AccordionItem />
           <AccordionItem />
         </div>

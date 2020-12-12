@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  width: 20rem;
+  background-color: lightgray;
+  padding: 1rem;
+  border: 1px solid black;
+  margin: 0.1rem;
+}
+
+.title:hover {
+  cursor: pointer;
+  background-color: lightblue;
+}
+
+.details {
+  width: 20rem;
+  padding: 1rem;
+  border: 1px solid black;
+  margin: 0.1rem;
+  font-size: 0.85rem;
+}
