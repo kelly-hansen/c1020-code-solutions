@@ -6,6 +6,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h2 {
+  margin-top: 0;
+}
+
+i {
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
 .modal {
   display: flex;
   position: fixed;
@@ -18,7 +31,7 @@ body {
 .menu {
   height: 100%;
   width: 25%;
-  padding: 2.5rem;
+  padding: 1.5rem;
 }
 
 .menu p:hover {
