@@ -16,6 +16,19 @@ class ValidatedInput extends React.Component {
   }
 
   render() {
+    const password = this.state.password;
+    let validIcon;
+    let validText;
+    if (password.length === 0) {
+      validIcon = 'fa-times';
+      validText = 'A password is required.';
+    } else if (password.length < 8) {
+      validIcon = 'fa-times';
+      validText = 'Your password is too short.';
+    } else {
+      validIcon = 'fa-check';
+      validText = '';
+    }
 
     return (
       <form>
@@ -26,9 +39,9 @@ class ValidatedInput extends React.Component {
             id="password"
             onChange={this.handleChange}
             value={this.state.password} />
-          <i className="fas fa-check"></i>
+          <i className={`fas ${validIcon}`}></i>
         </div>
-        <label htmlFor="password" name="validation">Validation</label>
+        <label htmlFor="password" name="validation">{validText}</label>
       </form>
     );
   }

@@ -9,11 +9,28 @@ input {
   margin-right: 1.25rem;
 }
 
+i {
+  font-size: 1.5rem;
+}
+
 form > * {
   margin: 0.25rem;
+}
+
+form > div {
+  display: flex;
+  align-items: center;
 }
 
 [name="validation"] {
   color: red;
   font-size: 0.85rem;
+}
+
+.fa-times {
+  color: red;
+}
+
+.fa-check {
+  color: green;
 }
