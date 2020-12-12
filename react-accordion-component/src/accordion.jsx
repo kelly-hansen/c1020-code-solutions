@@ -1,14 +1,26 @@
 import React from 'react';
 
-class AccordionItem extends React.Component {
+class AccordionItemTitle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.props.showHideDetails(parseInt(e.target.id));
+  }
+
   render() {
     return (
-      <div>
-        <div className="title">{this.props.itemObj.title}</div>
-        {this.props.selectedId === this.props.itemObj.id && (
-          <div className="details">{this.props.itemObj.details}</div>
-        )}
-      </div>
+      <div className="title" onClick={this.handleClick} id={this.props.itemObj.id}>{this.props.itemObj.title}</div>
+    );
+  }
+}
+
+class AccordionItemDetails extends React.Component {
+  render() {
+    return (
+      <div className="details">{this.props.details}</div>
     );
   }
 }
@@ -19,16 +31,28 @@ class Accordion extends React.Component {
     this.state = {
       selected: null
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.showHideDetails = this.showHideDetails.bind(this);
   }
 
-  handleClick() {
-
+  showHideDetails(id) {
+    if (id === this.state.selected) {
+      this.setState({ selected: null });
+    } else {
+      this.setState({ selected: id });
+    }
   }
 
   render() {
     const list = this.props.items.map(item => {
-      return <AccordionItem onClick={this.handleClick} selectedId={this.state.selected} itemObj={item} key={item.id} />;
+      const currentItem = (
+        <div key={item.id}>
+          <AccordionItemTitle showHideDetails={this.showHideDetails} itemObj={item} />
+          { this.state.selected === item.id && (
+            <AccordionItemDetails details={item.details} />
+          )}
+        </div>
+      );
+      return currentItem;
     });
 
     return <div>{list}</div>;
