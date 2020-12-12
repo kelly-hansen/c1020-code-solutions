@@ -9,8 +9,10 @@ class ValidatedInput extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange() {
-
+  handleChange(e) {
+    this.setState({
+      password: e.target.value
+    });
   }
 
   render() {
