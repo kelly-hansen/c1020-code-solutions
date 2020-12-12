@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+i {
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.menu {
+  height: 100%;
+  width: 25%;
+  padding: 1.5rem;
+}
+
+.menu p:hover {
+  cursor: pointer;
+}
+
+.dark-bg {
+  height: 100%;
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
