@@ -20,20 +20,20 @@ class ValidatedInput extends React.Component {
     let validIcon;
     let validText;
     if (password.length === 0) {
-      validIcon = 'fa-times';
+      validIcon = 'fa-times red';
       validText = 'A password is required.';
     } else if (password.length < 8) {
-      validIcon = 'fa-times';
+      validIcon = 'fa-times red';
       validText = 'Your password is too short.';
     } else {
       const regexLetters = /[A-Z]/;
       const regexNumbers = /\d/;
       const regexSpecial = /[!@#$%^&*((]/;
       if (regexLetters.test(password) && regexNumbers.test(password) && regexSpecial.test(password)) {
-        validIcon = 'fa-check';
+        validIcon = 'fa-check green';
         validText = '';
       } else {
-        validIcon = 'fa-times';
+        validIcon = 'fa-times red';
         validText = 'Must contain a capital letter, a digit, and a special character (!, @, #, $, %, ^, &, *, (, or ))';
       }
     }
