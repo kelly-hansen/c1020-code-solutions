@@ -7,9 +7,31 @@ class Carousel extends React.Component {
       imageIndex: 0,
       intervalID: null
     });
+    this.handleClick = this.handleClick.bind(this);
+    this.newInterval = this.newInterval.bind(this);
   }
 
-  newInterval() {
+  handleClick(e) {
+    let newIndex;
+    if (e.target.className === 'fas fa-chevron-left') {
+      newIndex = this.state.imageIndex - 1;
+      if (newIndex < 0) {
+        newIndex = this.props.images.length - 1;
+      }
+    } else if (e.target.className === 'fas fa-chevron-right') {
+      newIndex = this.state.imageIndex + 1;
+      if (newIndex > this.props.images.length - 1) {
+        newIndex = 0;
+      }
+    } else if (e.target.className === 'indicator' || e.target.className === 'indicator selected') {
+      newIndex = parseInt(e.target.id, 10);
+    }
+    if (newIndex !== undefined) {
+      this.newInterval(newIndex);
+    }
+  }
+
+  newInterval(index) {
     clearInterval(this.state.intervalID);
     const newIntervalID = setInterval(() => {
       let nextIndex;
@@ -20,9 +42,19 @@ class Carousel extends React.Component {
       }
       this.setState({
         imageIndex: nextIndex,
-        intervalID: newIntervalID
+        intervalID: this.state.intervalID
       });
     }, 3000);
+    let newIndex;
+    if (typeof index === 'number') {
+      newIndex = index;
+    } else {
+      newIndex = this.state.imageIndex;
+    }
+    this.setState({
+      imageIndex: newIndex,
+      intervalID: newIntervalID
+    });
   }
 
   render() {
@@ -37,7 +69,7 @@ class Carousel extends React.Component {
     });
 
     const carouselCont = (
-      <div className="carousel-cont">
+      <div className="carousel-cont" onClick={this.handleClick}>
         <div className="chevron-cont">
           <i className="fas fa-chevron-left"></i>
         </div>
@@ -56,7 +88,7 @@ class Carousel extends React.Component {
       </div>
     );
 
-    this.newInterval();
+    window.addEventListener('DOMContentLoaded', this.newInterval);
 
     return carouselCont;
   }
