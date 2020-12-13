@@ -9,11 +9,20 @@ class Carousel extends React.Component {
     });
   }
 
-  changeImage(index, intervalID) {
-    this.setState({
-      imageIndex: index,
-      intervalID: intervalID
-    });
+  newInterval() {
+    clearInterval(this.state.intervalID);
+    const newIntervalID = setInterval(() => {
+      let nextIndex;
+      if (this.state.imageIndex === this.props.images.length - 1) {
+        nextIndex = 0;
+      } else {
+        nextIndex = this.state.imageIndex + 1;
+      }
+      this.setState({
+        imageIndex: nextIndex,
+        intervalID: newIntervalID
+      });
+    }, 3000);
   }
 
   render() {
@@ -47,16 +56,7 @@ class Carousel extends React.Component {
       </div>
     );
 
-    clearInterval(this.state.intervalID);
-    let nextIndex;
-    if (this.state.imageIndex === this.props.images.length - 1) {
-      nextIndex = 0;
-    } else {
-      nextIndex = this.state.imageIndex + 1;
-    }
-    const intervalID = setInterval(() => {
-      this.changeImage(nextIndex, intervalID);
-    }, 3000);
+    this.newInterval();
 
     return carouselCont;
   }
