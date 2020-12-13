@@ -14,7 +14,7 @@ class Carousel extends React.Component {
         <div className="center-cont">
           <div className="spacer"></div>
           <div className="img-cont">
-            <img src="https://www.lipmanhearne.com/wp-content/uploads/2014/11/Thinking-Wide-5.jpg" alt="displayed image" />
+            <img src={this.props.images[0]} alt="displayed image" />
           </div>
           <div className="indicators-cont">
             <div className="indicator selected"></div>
