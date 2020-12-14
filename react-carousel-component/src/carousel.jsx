@@ -57,6 +57,10 @@ class Carousel extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.newInterval();
+  }
+
   render() {
     const indicators = this.props.images.map((image, i) => {
       let imageClass;
@@ -87,8 +91,6 @@ class Carousel extends React.Component {
         </div>
       </div>
     );
-
-    window.addEventListener('DOMContentLoaded', this.newInterval);
 
     return carouselCont;
   }
