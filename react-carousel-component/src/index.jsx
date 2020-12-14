@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import Carousel from './carousel';
 
 const images = [
-  '../src/images/001.png',
-  '../src/images/004.png',
-  '../src/images/007.png',
-  '../src/images/025.png',
-  '../src/images/039.png'
+  'images/001.png',
+  'images/004.png',
+  'images/007.png',
+  'images/025.png',
+  'images/039.png'
 ];
 
 ReactDOM.render(
