@@ -14,14 +14,16 @@ class Carousel extends React.Component {
   handleClick(e) {
     let newIndex;
     if (e.target.className === 'fas fa-chevron-left') {
-      newIndex = this.state.imageIndex - 1;
-      if (newIndex < 0) {
+      if (this.state.imageIndex - 1 < 0) {
         newIndex = this.props.images.length - 1;
+      } else {
+        newIndex = this.state.imageIndex - 1;
       }
     } else if (e.target.className === 'fas fa-chevron-right') {
-      newIndex = this.state.imageIndex + 1;
-      if (newIndex > this.props.images.length - 1) {
+      if (this.state.imageIndex + 1 > this.props.images.length - 1) {
         newIndex = 0;
+      } else {
+        newIndex = this.state.imageIndex + 1;
       }
     } else if (e.target.matches('.indicator')) {
       newIndex = parseInt(e.target.id, 10);
