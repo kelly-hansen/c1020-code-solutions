@@ -23,7 +23,7 @@ class Carousel extends React.Component {
       if (newIndex > this.props.images.length - 1) {
         newIndex = 0;
       }
-    } else if (e.target.className === 'indicator' || e.target.className === 'indicator selected') {
+    } else if (e.target.matches('.indicator')) {
       newIndex = parseInt(e.target.id, 10);
     }
     if (newIndex !== undefined) {
