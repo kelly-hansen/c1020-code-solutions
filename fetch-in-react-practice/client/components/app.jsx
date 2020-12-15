@@ -46,20 +46,30 @@ export default class App extends React.Component {
   }
 
   toggleCompleted(todoId) {
-    /**
-     * Find the index of the todo with the matching todoId in the state array.
-     * Get its "isCompleted" status.
-     * Make a new object containing the opposite "isCompleted" status.
-     * Use fetch to send a PATCH request to `/api/todos/${todoId}`
-     * Then 😉, once the response JSON is received and parsed,
-     * replace the old todo in the state array.
-     *
-     * NOTE: "toggle" means to flip back and forth, so clicking a todo
-     * in the list should "toggle" its isCompleted status back and forth.
-     *
-     * TIP: Be sure to SERIALIZE the updates in the body with JSON.stringify()
-     * And specify the "Content-Type" header as "application/json"
-     */
+    let todoIndex;
+    for (let i = 0; i < this.state.todos.length; i++) {
+      if (this.state.todos[i].todoId === todoId) {
+        todoIndex = i;
+        break;
+      }
+    }
+    const todoIsCompleted = this.state.todos[todoIndex].isCompleted;
+    fetch(`/api/todos/${todoId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isCompleted: !todoIsCompleted
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const stateObj = Object.assign({}, this.state);
+        stateObj.todos.splice(todoIndex, 1, data);
+        this.setState(stateObj);
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
