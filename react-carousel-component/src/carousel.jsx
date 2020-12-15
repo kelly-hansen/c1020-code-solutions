@@ -11,20 +11,28 @@ class Carousel extends React.Component {
     this.newInterval = this.newInterval.bind(this);
   }
 
+  getNextIndex() {
+    if (this.state.imageIndex + 1 > this.props.images.length - 1) {
+      return 0;
+    } else {
+      return this.state.imageIndex + 1;
+    }
+  }
+
+  getPreviousIndex() {
+    if (this.state.imageIndex - 1 < 0) {
+      return this.props.images.length - 1;
+    } else {
+      return this.state.imageIndex - 1;
+    }
+  }
+
   handleClick(e) {
     let newIndex;
     if (e.target.className === 'fas fa-chevron-left') {
-      if (this.state.imageIndex - 1 < 0) {
-        newIndex = this.props.images.length - 1;
-      } else {
-        newIndex = this.state.imageIndex - 1;
-      }
+      newIndex = this.getPreviousIndex();
     } else if (e.target.className === 'fas fa-chevron-right') {
-      if (this.state.imageIndex + 1 > this.props.images.length - 1) {
-        newIndex = 0;
-      } else {
-        newIndex = this.state.imageIndex + 1;
-      }
+      newIndex = this.getNextIndex();
     } else if (e.target.matches('.indicator')) {
       newIndex = parseInt(e.target.id, 10);
     }
@@ -33,19 +41,18 @@ class Carousel extends React.Component {
     }
   }
 
+  updateStateImageIndex(index) {
+    this.setState({
+      imageIndex: index,
+      intervalID: this.state.intervalID
+    });
+  }
+
   newInterval(index) {
     clearInterval(this.state.intervalID);
     const newIntervalID = setInterval(() => {
-      let nextIndex;
-      if (this.state.imageIndex === this.props.images.length - 1) {
-        nextIndex = 0;
-      } else {
-        nextIndex = this.state.imageIndex + 1;
-      }
-      this.setState({
-        imageIndex: nextIndex,
-        intervalID: this.state.intervalID
-      });
+      const nextIndex = this.getNextIndex();
+      this.updateStateImageIndex(nextIndex);
     }, 3000);
     let newIndex;
     if (typeof index === 'number') {
