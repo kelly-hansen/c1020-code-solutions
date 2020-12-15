@@ -38,9 +38,8 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        const stateObj = Object.assign({}, this.state);
-        stateObj.todos.push(data);
-        this.setState(stateObj);
+        const newArray = this.state.todos.concat(data);
+        this.setState({ todos: newArray });
       })
       .catch(err => console.error(err));
   }
@@ -65,9 +64,9 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        const stateObj = Object.assign({}, this.state);
-        stateObj.todos.splice(todoIndex, 1, data);
-        this.setState(stateObj);
+        const todosCopy = this.state.todos.slice();
+        todosCopy.splice(todoIndex, 1, data);
+        this.setState({ todos: todosCopy });
       })
       .catch(err => console.error(err));
   }
