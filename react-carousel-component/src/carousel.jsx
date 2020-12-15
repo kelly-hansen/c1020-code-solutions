@@ -54,20 +54,14 @@ class Carousel extends React.Component {
       const nextIndex = this.getNextIndex();
       this.updateStateImageIndex(nextIndex);
     }, 3000);
-    let newIndex;
-    if (typeof index === 'number') {
-      newIndex = index;
-    } else {
-      newIndex = this.state.imageIndex;
-    }
     this.setState({
-      imageIndex: newIndex,
+      imageIndex: index,
       intervalID: newIntervalID
     });
   }
 
   componentDidMount() {
-    this.newInterval();
+    this.newInterval(0);
   }
 
   render() {
