@@ -18,11 +18,6 @@ export default class App extends React.Component {
   }
 
   getAllTodos() {
-    /**
-     * Use fetch to send a GET request to `/api/todos`.
-     * Then 😉, once the response JSON is received and parsed,
-     * update state with the received todos.
-     */
     fetch('/api/todos')
       .then(res => res.json())
       .then(data => {
@@ -34,14 +29,20 @@ export default class App extends React.Component {
   }
 
   addTodo(newTodo) {
-    /**
-    * Use fetch to send a POST request to `/api/todos`.
-    * Then 😉, once the response JSON is received and parsed,
-    * add the created todo to the state array.
-    *
-    * TIP: Be sure to SERIALIZE the todo object in the body with JSON.stringify()
-    * and specify the "Content-Type" header as "application/json"
-    */
+    fetch('api/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTodo)
+    })
+      .then(res => res.json())
+      .then(data => {
+        const stateObj = Object.assign({}, this.state);
+        stateObj.todos.push(data);
+        this.setState(stateObj);
+      })
+      .catch(err => console.error(err));
   }
 
   toggleCompleted(todoId) {
