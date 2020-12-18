@@ -1,0 +1,32 @@
+-App component is mounted (renders nothing at first because this.state.isAuthorizing is null)
+-App's componentDidMount method is run, resulting in this.state.isAuthorizing = false
+-App is rendered again, an object containing user and route properties of state as well as handleSignIn and handleSignOut is assigned to contextValue, which is passed as the value prop for AppContext.Provider React Component, which is returned as part of the render
+-A PageContainer react element is returned as well, whose children are determined by the this.renderPage() method. Because this.state.route === '', this initially renders Home component, which then returns the Redirect component with a prop to="sign-in"
+- Redirect changes the window.location.hash to #sign-in, triggering the 'hashchange' event listener in App's componentDidMount().
+-App renders again, and this time renderPage() returns the Auth React Component
+
+*whew*
+
+User can sign up:
+-Auth uses "weclomeMessage" (lol) variable which comes from context via the Provider in App component to determine displayed message, and returns AuthForm react component with route.path and handleSignIn from context passed to it as props
+-AuthForm initially renders sign in page but can be toggled by clicking 'Register Now' button which changes the hash to '#sign-up', triggering a re-render of App
+-When a user inputs username and password (which is updated via onChange, calls handleChange method, updates state), then submits form (onSubmit calls handleSubmit()) handleSubmit() calls fetch with the path including action variable from props, which in this case is 'sign-up', with options: post method, header specifying json content, and body with JSON.stringified username and password
+-fetch request is sent to the server, and in index.js the first post route is run.
+-assuming user has entered username and password, Argon2 hashes the password, assembles paramaterized sql, and queries the database, inserting the new row with specified username and hashedPassword, automatically generating userId and createdAt time stamp
+-assuming query is successful, client is sent 201 status with json representing the created userId, username, and createdAt
+-any errors are handled by .catch(), which passes them to errorMiddleware
+-back in AuthForm, response json is parsed and window.location.hash is changed to 'sign-in', triggering App re-render
+
+User can sign in:
+-When handleSubmit is triggered here, fetch method follows server post route for 'sign-in'.
+-sign in route verifies that username and password were entered, assembles paraterized sql, the queries the database for the userId and hashedPassword matching the provided username
+-if the userId and password are returned, Argon2 compares queried password against provided password, and if they match, assembles a payload containing the userId and username
+-jwt.sign() is called with the payload and token secret as arguments, assembling a token and saving it to a variable. A json response is sent to the client with an object containing the token and payload
+-any errors are handled by .catch(), which passes them to errorMiddleware
+-back in AuthForm, the response's json is parsed, then passed as an argument to its own onSignIn prop, which calls handleSignIn() in App component via context
+-handleSignIn() destructures the payload, adds it to localStorage, and sets state with the user object, triggering a re-render
+-On re-render, the rendered AuthPage returns Redirect component with prop to="" because user provided by context is now truthy. Redirect now changes the window hash to '#', triggering another App re-render
+-During the render, renderPage() returns the Home React Component, which is now rendered as the child of the PageContainer component
+
+User can stay signed in:
+-When the page is reloaded, componentDidMount() checks localStorage for a token, and if one exists, decodes it and sets it as the user property of this.state, and sets isAuthorizing to false to that when the re-render happens, renderPage() returns the Home component
