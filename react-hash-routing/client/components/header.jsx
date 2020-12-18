@@ -6,7 +6,7 @@ export default function Header(props) {
       <nav className="navbar navbar-dark bg-dark shadow-sm">
         <div className="container">
           <div className="col px-0">
-            <a href="" className="navbar-brand">
+            <a href={'#'} className="navbar-brand">
               <i className="fa fa-dollar-sign" /> Wicked Sales
             </a>
           </div>
