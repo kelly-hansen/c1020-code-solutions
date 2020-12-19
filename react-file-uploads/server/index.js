@@ -16,12 +16,11 @@ const jsonMiddleware = express.json();
 app.use(jsonMiddleware);
 
 app.post('/api/uploads', uploadsMiddleware, (req, res, next) => {
-  console.log(req);
   const { caption } = req.body;
   if (!caption) {
     throw new ClientError(400, 'caption is a required field');
   }
-  const imageURL = `/images${req.file.filename}`;
+  const imageURL = `/images/${req.file.filename}`;
   const sql = `
   insert into "images" ("caption", "url")
   values ($1, $2)
